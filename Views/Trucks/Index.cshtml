@@ -1,0 +1,56 @@
+﻿@model IEnumerable<CRUDTesteMeta.Models.Trucks>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TruckId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrukModel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrukModelYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrukManufacturingYear)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+    if (item.TrukModel.Equals("FM") || item.TrukModel.Equals("FH"))  
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TruckId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrukModel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrukModelYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrukManufacturingYear)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+}
+    </tbody>
+</table>
